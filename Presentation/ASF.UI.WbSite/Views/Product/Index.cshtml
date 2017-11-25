@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ASF.Entities.Product>
+
+@{
+    ViewBag.Title = "Products list";
+}
+
+@Html.Partial("_Espacio1")
+
+<h2>Listado de Productos</h2><br />
+
+<a href='@Url.Action("mostrarCarrito", "Cart")'>
+    @*<img src= @Url.Content("fa fa-shopping-cart fa-3x") />*@
+    <i class="fa fa-shopping-cart fa-3x" style="float:right; padding-right:50px" aria-hidden="true"></i>
+    <h5 style="float:right; padding-right:10px" aria-hidden="true">Mi Carrito</h5>
+</a>
+
+<br /><br />
+<hr style="clear:both" />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+            {
+            
+            <div class="col-sm-3">
+                <div class="thumbnail">
+                    <img class="img-thumbnail" src=@Url.Content("~/Image/" + item.Image) />
+                    <div class="caption">
+                        <h5 id="nombre">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p id="description">@Html.DisplayFor(modelItem => item.Description)</p>
+                        <p id="precio"> $ @Html.DisplayFor(modelItem => item.Price)</p>
+                        <p>@Html.ActionLink("Agregar", "agregarCarrito", "Cart", new { id = item.Id }, new { @class = "btn btn-primary" }) </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@Html.Partial("_Espacio2")

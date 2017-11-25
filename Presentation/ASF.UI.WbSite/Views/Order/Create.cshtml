@@ -1,0 +1,139 @@
+﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@model ASF.Entities.Order
+
+@{
+    ViewBag.Title = "Create";
+}
+@Html.Partial("_Espacio1")
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Order</h4>
+        <hr />
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClientId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor( model => model.ClientId, "Client", htmlAttributes: new { @class = "control-label col-md-2" } )
+            <div class="col-md-10">
+                @*@Html.DropDownList( "Client" )*@
+                @Html.DropDownListFor( model => model.ClientId, ViewBag.Client as SelectList, new { htmlAttributes = new { @class = "form-control" } } ) <h4>Aca deberia ir el autocomplete</h4>
+            </div>
+         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientId, "Client", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="Client" name="Client" type="text" />
+            </div>
+        </div>
+
+            <div class="form-group">
+                @Html.LabelFor( model => model.OrderDate, htmlAttributes: new { @class = "control-label col-md-2" } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.OrderDate, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor( model => model.OrderDate, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor( model => model.TotalPrice, htmlAttributes: new { @class = "control-label col-md-2" } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.TotalPrice, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor( model => model.TotalPrice, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor( model => model.State, htmlAttributes: new { @class = "control-label col-md-2" } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.State, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor( model => model.State, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor( model => model.OrderNumber, htmlAttributes: new { @class = "control-label col-md-2" } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.OrderNumber, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor( model => model.OrderNumber, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor( model => model.ItemCount, htmlAttributes: new { @class = "control-label col-md-2" } )
+                <div class="col-md-10">
+                    @Html.EditorFor( model => model.ItemCount, new { htmlAttributes = new { @class = "form-control" } } )
+                    @Html.ValidationMessageFor( model => model.ItemCount, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.HiddenFor(model => model.Rowid, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.Rowid, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rowid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-Hidden col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.CreatedOn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreatedOn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-Hidden col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.ChangedOn, htmlAttributes: new { @class = "control-Hidden col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.ChangedOn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChangedOn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.ChangedBy, htmlAttributes: new { @class = "control-Hidden col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.ChangedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChangedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+@Html.Partial("_Espacio2")

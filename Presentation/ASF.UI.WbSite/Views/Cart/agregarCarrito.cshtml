@@ -1,0 +1,75 @@
+﻿@*@model IEnumerable<ASF.Entities.CartItem>*@
+
+@{
+    ViewBag.Title = "Productos Carrito";
+}
+
+@Html.Partial("_Espacio1")
+
+<h2>Productos Carrito</h2><br />
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Producto")
+        </th>
+        <th>
+            @Html.DisplayName("Cantidad")
+        </th>
+        <th>
+            @Html.DisplayName("Precio Unitario")
+        </th>
+        <th>
+            @Html.DisplayName("Sub-Total")
+        </th>
+        <th></th>
+    </tr>
+    @{ 
+        double total = 0;
+        double subtotal = 0;
+    }
+    @if(Session["Carrito"] != null)
+    {
+        foreach (var item in Session["Carrito"] as List<ASF.Entities.CartItemDTO>)
+        {
+            total += (double) (item.Price * item.Quantity);
+            subtotal = item.Price * item.Quantity;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayName(subtotal.ToString())
+                </td>
+       
+        <td>
+            
+            @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId})
+        </td>
+    </tr>
+        }
+        <tr>
+            <th colspan="2">
+                @Html.DisplayName("Total")
+            </th>
+            <th>
+                @Html.DisplayName(total.ToString())
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Seguir Comprando", "Index", "Product")
+
+@Html.Partial("_Espacio2")
