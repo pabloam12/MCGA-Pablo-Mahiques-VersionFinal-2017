@@ -545,7 +545,16 @@
     </Content>
     <None Include="Content\Site.less" />
     <Content Include="humans.txt" />
+    <Content Include="Image\blusa_blanca.jpg" />
+    <Content Include="Image\blusa_blanca_mujer.jpg" />
+    <Content Include="Image\botas_moto.jpg" />
+    <Content Include="Image\camisa_entalle.jpg" />
+    <Content Include="Image\camisa_jean.jpg" />
+    <Content Include="Image\camisa_mujer.jpg" />
+    <Content Include="Image\campe_hombre.jpg" />
+    <Content Include="Image\campe_mujer.jpg" />
     <Content Include="Image\carte.jpg" />
+    <Content Include="Image\muscu_termica.jpg" />
     <Content Include="Image\zapa.jpg" />
     <Content Include="Image\zapa_mu.jpg" />
     <Content Include="Nota-Estado.txt" />
