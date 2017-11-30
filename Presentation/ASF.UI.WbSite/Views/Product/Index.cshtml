@@ -18,21 +18,26 @@
 <hr style="clear:both" />
 <div class="container">
     <div class="row">
-        @foreach (var item in Model)
+
+        <div class="col-sm-12">
+            @foreach (var item in Model)
             {
-            
-            <div class="col-sm-push-3">
-                <div class="thumbnail">
-                    <img class="img-thumbnail" src=@Url.Content("~/Image/" + item.Image) />
-                    <div class="caption">
-                        <h5 id="nombre">@Html.DisplayFor(modelItem => item.Title)</h5>
-                        <p id="description">@Html.DisplayFor(modelItem => item.Description)</p>
-                        <p id="precio"> $ @Html.DisplayFor(modelItem => item.Price)</p>
-                        <p>@Html.ActionLink("Agregar", "agregarCarrito", "Cart", new { id = item.Id }, new { @class = "btn btn-primary" }) </p>
+
+                <div class="col-sm-3">
+                    <div class="thumbnail">
+                        <img class="img-thumbnail" src=@Url.Content("~/Image/" + item.Image) />
+                        <div class="caption">
+                            <h5 id="nombre">@Html.DisplayFor(modelItem => item.Title)</h5>
+                            <p id="description">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <p id="precio"> $ @Html.DisplayFor(modelItem => item.Price)</p>
+                            <p>@Html.ActionLink("Agregar", "agregarCarrito", "Cart", new { id = item.Id }, new { @class = "btn btn-primary" }) </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
+
+            }
+        </div>
+
     </div>
 </div>
 

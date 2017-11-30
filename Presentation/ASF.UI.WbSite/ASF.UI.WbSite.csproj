@@ -605,7 +605,7 @@
     <Content Include="Sima\img\extended.jpg" />
     <Content Include="Sima\img\flckr.jpg" />
     <Content Include="Sima\img\happy_client.png" />
-    <Content Include="Sima\img\logo.png" />
+    <Content Include="Sima\img\logo_OLD.png" />
     <Content Include="Sima\img\map-marker.png" />
     <Content Include="Sima\img\pt_1.jpg" />
     <Content Include="Sima\img\pt_2.jpg" />
@@ -631,6 +631,7 @@
     <Content Include="Sima\js\vendor\jquery-1.11.3.min.js" />
     <Content Include="Sima\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Sima\js\waypoints.min.js" />
+    <Content Include="Sima\img\logo.png" />
     <Content Include="Views\Error\BadRequest.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Web.config">
