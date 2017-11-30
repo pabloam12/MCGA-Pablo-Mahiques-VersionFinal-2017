@@ -9,6 +9,7 @@ using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DealerController : Controller
     {
         // GET: Dealer
@@ -21,7 +22,7 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Dealer/Create
-        public ActionResult Create ()
+        public ActionResult Create()
         {
             var category = new CategoryProcess().SelectList();
             var country = new CountryProcess().SelectList();
@@ -50,21 +51,21 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Dealer/Details
-        public ActionResult Details (int id)
+        public ActionResult Details(int id)
         {
             var cp = new DealerProcess();
             return View(cp.findDealer(id));
         }
 
         // GET: Dealer/Edit/5
-        public ActionResult Edit (int id)
+        public ActionResult Edit(int id)
         {
 
             var category = new CategoryProcess().SelectList();
             var country = new CountryProcess().SelectList();
 
-            ViewBag.Category = new SelectList( category, "Id", "Name", id );
-            ViewBag.Country = new SelectList( country, "Id", "Name", id );
+            ViewBag.Category = new SelectList(category, "Id", "Name", id);
+            ViewBag.Country = new SelectList(country, "Id", "Name", id);
 
             var cp = new DealerProcess();
             return View(cp.findDealer(id));
@@ -77,9 +78,9 @@ namespace ASF.UI.WbSite.Controllers
             try
             {
                 var cp = new DealerProcess();
-                cp.editDealer( dealer );
+                cp.editDealer(dealer);
                 DataCache.Instance.DealerListRemoveDTO();
-                return RedirectToAction( "Index" );
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -88,11 +89,11 @@ namespace ASF.UI.WbSite.Controllers
         }
 
         // GET: Dealer/Delete/5
-        public ActionResult Delete ( int id )
+        public ActionResult Delete(int id)
         {
             var cp = new DealerProcess();
 
-            return View( cp.findDealer( id ) );
+            return View(cp.findDealer(id));
         }
 
         // POST: Dealer/Delete/5
@@ -102,9 +103,9 @@ namespace ASF.UI.WbSite.Controllers
             try
             {
                 var cp = new DealerProcess();
-                cp.deleteDealer( id );
+                cp.deleteDealer(id);
                 DataCache.Instance.DealerListRemoveDTO();
-                return RedirectToAction( "Index" );
+                return RedirectToAction("Index");
             }
             catch
             {

@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartProcess.cs" />
     <Compile Include="CategoryProcess.cs" />
     <Compile Include="ClientProcess.cs" />
     <Compile Include="CountryProcess.cs" />

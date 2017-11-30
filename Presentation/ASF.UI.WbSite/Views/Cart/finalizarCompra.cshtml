@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "finalizarCompra";
+}
+
+@Html.Partial("_Espacio1")
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron">
+                <p>Muchas gracias por su compra!</p>
+                <span style="float:right">@Html.ActionLink("Volver", "Index", "Home", null, new { @class = "btn btn-primary" })</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="float:right">
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_Espacio2")

@@ -31,6 +31,7 @@
         <div id="loader">
         </div>
     </div>
+
     <!-- end preloader -->
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -47,23 +48,33 @@
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
-                    <div class="rgt_hd">
+                    <div class="lft_hd">
                         <div class="main_menu">
                             <nav id="nav_menu">
                                 <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                    @*<span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>*@
                                 </button>
                                 <div id="navbar">
-                                    <ul>
+                                    <ul nav navbar-nav navbar-left>
                                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                                         <li>@Html.ActionLink("Comprar", "Index", "Product")</li>
                                         <li>@Html.ActionLink("Nosotros", "About", "Home")</li>
                                         <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                                        @*<li><a class="page-scroll" href="#abt_sec">Nosotros</a></li>
-                                            <li><a class="page-scroll" href="#ctn_sec">Contacto</a></li>*@
+
+                                        @*si el usuario admin esta logeado entonces muestra la opcion dealer en el menu*@
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li>@Html.ActionLink("Categorias", "Index", "Category")</li>
+                                            <li>@Html.ActionLink("Proveedores", "Index", "Dealer")</li>
+                                            <li>@Html.ActionLink("Paises", "Index", "Country")</li>
+                                        }
+                                        
                                     </ul>
+
+                                    @Html.Partial("_LoginPartial")
+
                                 </div>
                             </nav>
                         </div>
@@ -72,7 +83,7 @@
                 </div>
             </div>
         </div>
-    </header>
+            </header>
     <!-- End Header Section -->
     @*<div id="main" class="container body-content" role="main">
         <br /><br /><br /><br /><br /><br />*@
@@ -86,127 +97,47 @@
     <!-- start footer Section -->
 
     <footer id="ft_sec">
+
+        @*<ul class="copy_right">
+            <li><p>Redes Sociales</p></li>
+
+        </ul>*@
+
         <div class="container">
-            <hr /><br /><br />
+            <hr /><br />
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ft">
                         <ul>
-                            <li><a href="https://www.facebook.com/search/top/?q=jmre%20mcga"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/jmremcga"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="https://twitter.com/jmremcga"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/search/results/index/?keywords=jmremcga&origin=GLOBAL_SEARCH_HEADER"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UC-vKowth-09zkr0-gwxFyQg?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
-
-                                         </div>
-    </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/site")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
-
-
+                            <li><a href="https://www.facebook.com/No-oficial-Petra_Comerce-196667644235381/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/pablo.m12"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://twitter.com/horaser"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.youtube.com/channel/UC7A3AlW8Ae8hgFI6ViDdrfw?view_as=subscriber"><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div>
-<ul class="copy_right">
-    <li><p>&copy; @DateTime.Now.Year - Pablo Mahiques</p></li>
-
-</ul>
                 </div>
             </div>
         </div>
     </footer>
-<!-- End footer Section -->
-@*<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
-@*<script src="~/Sima/js/vendor/jquery-1.11.2.min.js"></script>*@
-<script src="~/Sima/js/vendor/jquery-1.11.3.min.js"></script>
-<script src="~/Sima/js/isotope.pkgd.min.js"></script>
-<script src="~/Sima/js/bootstrap.min.js"></script>
-<script src="~/Sima/js/jquery-ui.js"></script>
-<script src="~/Sima/js/appear.js"></script>
-<script src="~/Sima/js/jquery.counterup.min.js"></script>
-<script src="~/Sima/js/waypoints.min.js"></script>
-<script src="~/Sima/js/owl.carousel.min.js"></script>
-<script src="~/Sima/js/showHide.js"></script>
-<script src="~/Sima/js/jquery.nicescroll.min.js"></script>
-<script src="~/Sima/js/jquery.easing.min.js"></script>
-<script src="~/Sima/js/scrolling-nav.js"></script>
-<script src="~/Sima/js/plugins.js"></script>
-<!-- Google Map js -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-    function initialize() {
-        var mapOptions = {
-            zoom: 14,
-            scrollwheel: false,
-            center: new google.maps.LatLng(41.092586000000000000, -75.592688599999970000)
-        };
-        var map = new google.maps.Map(document.getElementById('googleMap'),
-            mapOptions);
-        var marker = new google.maps.Marker({
-            position: map.getCenter(),
-            animation: google.maps.Animation.BOUNCE,
-            icon: 'img/map-marker.png',
-            map: map
-        });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<script src="~/Sima/js/main.js"></script>
-<script src="~/Sima/js/showHide.js" type="text/javascript"></script>
+    @*<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
+    @*<script src="~/Sima/js/vendor/jquery-1.11.2.min.js"></script>*@
+    <script src="~/Sima/js/vendor/jquery-1.11.3.min.js"></script>
+    <script src="~/Sima/js/isotope.pkgd.min.js"></script>
+    <script src="~/Sima/js/bootstrap.min.js"></script>
+    @*<script src="~/Sima/js/jquery-ui.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Sima/js/appear.js"></script>
+    <script src="~/Sima/js/jquery.counterup.min.js"></script>
+    <script src="~/Sima/js/waypoints.min.js"></script>
+    <script src="~/Sima/js/owl.carousel.min.js"></script>
+    <script src="~/Sima/js/showHide.js"></script>
+    <script src="~/Sima/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Sima/js/jquery.easing.min.js"></script>
+    <script src="~/Sima/js/scrolling-nav.js"></script>
+    <script src="~/Sima/js/plugins.js"></script>
+    <script src="~/Sima/js/main.js"></script>
+    <script src="~/Sima/js/showHide.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-
-        $('.show_hide').showHide({
-            speed: 1000,  // speed you want the toggle to happen
-            easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-            changeText: 1, // if you dont want the button text to change, set this to 0
-            showText: 'View',// the button text to show when a div is closed
-            hideText: 'Close' // the button text to show when a div is open
-
-        });
-
-
-    });
-
-</script>
-<script>
-    jQuery(document).ready(function ($) {
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
-    });
-</script>
-<script>
-
-    //Hide Overflow of Body on DOM Ready //
-    $(document).ready(function () {
-        $("body").css("overflow", "hidden");
-    });
-
-    // Show Overflow of Body when Everything has Loaded
-    $(window).load(function () {
-        $("body").css("overflow", "visible");
-        var nice = $('html').niceScroll({
-            cursorborder: "5",
-            cursorcolor: "#00AFF0",
-            cursorwidth: "3px",
-            boxzoom: true,
-            autohidemode: true
-        });
-
-    });
-</script>
-
+  
 </body>
 </html>

@@ -14,7 +14,7 @@ using ASF.Entities;
 
 namespace ASF.Services.Contracts
 {
-    
+
     [DataContract]
     public class FindResponse
     {
@@ -37,7 +37,9 @@ namespace ASF.Services.Contracts
         public Client ResultClient { get; set; }
 
         [DataMember]
-        public  Product ResultProduct { get; set; }
+        public Product ResultProduct { get; set; }
+
+        [DataMember]
+        public CartItemDTO ResultCartItemDTO { get; set; }
     }
 }
-

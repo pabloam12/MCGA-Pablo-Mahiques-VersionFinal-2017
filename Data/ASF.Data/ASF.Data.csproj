@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartDAC.cs" />
     <Compile Include="CategoryDAC.cs" />
     <Compile Include="ClientDAC.cs" />
     <Compile Include="CountryDAC.cs" />

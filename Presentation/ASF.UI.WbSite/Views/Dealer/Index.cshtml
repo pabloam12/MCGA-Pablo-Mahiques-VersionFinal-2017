@@ -1,106 +1,89 @@
 ﻿@model IEnumerable<ASF.Entities.DealerDTO>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado Proveedores";
 }
 @Html.Partial("_Espacio1")
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Listado Proveedores</h2>
+<br /><br />
+<div class="row">
+    <div class="col-sm-9">
+        <p>@Html.ActionLink("Alta Proveedores", "Create", null, new { @class = "btn btn-primary btn-sm" })</p>
+    </div>
+    @*<div class="col-sm-1">
+        @Html.ActionLink("Country", "Index", "Country", null, new { @class = "btn btn-success btn-sm" })
+    </div>
+    <div class="col-sm-1">
+        @Html.ActionLink("Category", "Index", "Category", null, new { @class = "btn btn-success btn-sm" })
+    </div>*@
+</div>
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayName("Nombre")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayName("Apellido")
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>*@
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+            @Html.DisplayName("Categoria")
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.CountryId)
-        </th>*@
+                @Html.DisplayNameFor(model => model.CountryId)
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.CountryName)
+            @Html.DisplayName("Pais")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayName("Rubro")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TotalProducts)
+            @Html.DisplayName("Cantidad Productos")
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Rowid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedBy)
-        </th>*@
+       
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CountryId)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalProducts)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Rowid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedBy)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CountryId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalProducts)
+            </td>
+          
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Ver", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
 @Html.Partial("_Espacio2")

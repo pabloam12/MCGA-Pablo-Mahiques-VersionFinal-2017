@@ -18,6 +18,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ASF.UI.WbSite.Services.Cache;
+using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Facebook;
+
 
 namespace ASF.UI.WbSite
 {
@@ -59,6 +62,18 @@ namespace ASF.UI.WbSite
                 }
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            ////////////login con google+///////////////
+            //app.UseGoogleAuthentication(
+            //    clientId: "",
+            //    clientSecret: "");  
+            ////////////////////////////////////////////
+
+            ///////////login con facebook///////////////
+            app.UseFacebookAuthentication(
+                appId: "365585453889571",
+                appSecret: "6a5d8fb72a3aff2f85b73144709899e2");
+            ////////////////////////////////////////////
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
             app.UseTwoFactorSignInCookie(DefaultAuthenticationTypes.TwoFactorCookie, TimeSpan.FromMinutes(5));

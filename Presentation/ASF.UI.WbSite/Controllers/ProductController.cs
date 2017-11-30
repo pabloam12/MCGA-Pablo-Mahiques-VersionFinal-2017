@@ -9,7 +9,8 @@ using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
-       public class ProductController : Controller
+    [Authorize]
+    public class ProductController : Controller
     {
         // GET: Product
         public ActionResult Index()

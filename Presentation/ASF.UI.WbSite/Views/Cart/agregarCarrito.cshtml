@@ -1,22 +1,32 @@
 ﻿@*@model IEnumerable<ASF.Entities.CartItem>*@
 
 @{
-    ViewBag.Title = "Productos Carrito";
+    ViewBag.Title = "Productos en Carrito";
 }
 
 @Html.Partial("_Espacio1")
 
-<h2>Productos Carrito</h2><br />
-
-
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Productos en Carrito</h2><br />
+    </div>
+    @*<div class="col-lg-3">
+        <h4>Fecha: @DateTime.Now.ToShortDateString()</h4>
+    </div>*@
+    <div class="row">
+        <div class="col-lg-4" style="float:right">
+            @Html.ActionLink("Finalizar Compra", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
-            @Html.DisplayName("Producto")
+            @Html.DisplayName("Articulo")
         </th>
         <th>
             @Html.DisplayName("Cantidad")
@@ -24,21 +34,17 @@
         <th>
             @Html.DisplayName("Precio Unitario")
         </th>
-        <th>
-            @Html.DisplayName("Sub-Total")
-        </th>
         <th></th>
     </tr>
-    @{ 
+    @{
         double total = 0;
-        double subtotal = 0;
     }
-    @if(Session["Carrito"] != null)
+    @if (Session["Carrito"] != null)
     {
         foreach (var item in Session["Carrito"] as List<ASF.Entities.CartItemDTO>)
         {
-            total += (double) (item.Price * item.Quantity);
-            subtotal = item.Price * item.Quantity;
+            total += (double)(item.Price * item.Quantity);
+            item.ItemCount += 1;
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
@@ -50,14 +56,9 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayName(subtotal.ToString())
+                    @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
                 </td>
-       
-        <td>
-            
-            @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId})
-        </td>
-    </tr>
+            </tr>
         }
         <tr>
             <th colspan="2">
@@ -72,6 +73,10 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Seguir Comprando", "Index", "Product")
+<div class="row">
+    <div class="col-lg-2">
+        @Html.ActionLink("Seguir Agregando Productos", "Index", "Product", null, new { @class = "btn btn-success" })
+    </div>
+</div>
 
 @Html.Partial("_Espacio2")

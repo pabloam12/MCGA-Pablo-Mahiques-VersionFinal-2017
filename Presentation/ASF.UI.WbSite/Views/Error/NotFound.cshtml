@@ -4,6 +4,8 @@
     ViewBag.Description = "Sorry, but the page you were looking for can't be found.";
 }
 
+@Html.Partial("_Espacio1")
+
 <div class="jumbotron text-center">
     <header>
         <h1><span aria-hidden="true" class="fa fa-exclamation-circle text-danger"></span> @ViewBag.Title</h1>
@@ -11,3 +13,5 @@
     <p>@ViewBag.Description</p>
     <a class="btn btn-primary btn-lg" href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><span aria-hidden="true" class="fa fa-home"></span> Take me home</a>
 </div>
+
+@Html.Partial("_Espacio2")

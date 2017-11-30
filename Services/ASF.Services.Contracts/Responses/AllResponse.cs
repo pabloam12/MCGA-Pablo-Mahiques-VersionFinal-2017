@@ -14,7 +14,7 @@ using ASF.Entities;
 
 namespace ASF.Services.Contracts
 {
-    
+
     [DataContract]
     public class AllResponse
     {
@@ -38,6 +38,9 @@ namespace ASF.Services.Contracts
 
         [DataMember]
         public List<Product> ResultProduct { get; set; }
+
+        [DataMember]
+        public List<CartItemDTO> ResultCartItemDTO { get; set; }
     }
 }
 

@@ -11,7 +11,7 @@ namespace ASF.UI.WbSite.Controllers
 {
     public class CartController : Controller
     {
-           
+
         public ActionResult mostrarCarrito()
         {
             return View(Session["Carrito"]);
@@ -23,13 +23,13 @@ namespace ASF.UI.WbSite.Controllers
 
             if (Session["Carrito"] == null)
             {
-               List<CartItemDTO> cartItem = new List<CartItemDTO>();
+                List<CartItemDTO> cartItem = new List<CartItemDTO>();
                 var carritoItem = new CartItemDTO();
                 carritoItem.ProductId = producto.Id;
                 carritoItem.Title = producto.Title;
                 carritoItem.Price = producto.Price;
                 carritoItem.Quantity = producto.QuantitySold;
-            
+
                 cartItem.Add(carritoItem);
                 Session["Carrito"] = cartItem;
             }
@@ -54,13 +54,42 @@ namespace ASF.UI.WbSite.Controllers
         private int controlarId(int id)
         {
             List<CartItemDTO> cartItem = (List<CartItemDTO>)Session["Carrito"];
-            for (int i = 0; i < cartItem.Count ; i++)
+            for (int i = 0; i < cartItem.Count; i++)
             {
                 if (cartItem[i].ProductId == id)
                     return i;
             }
             return -1;
         }
+
+        public ActionResult finalizarCompra()
+        {
+            List<CartItemDTO> compras = (List<CartItemDTO>)Session["Carrito"];
+
+            if (compras != null && compras.Count > 0)
+            {
+                //CartItem cartitem = new CartItem();
+                //List<CartItem> listcartitem = new List<CartItem>();
+
+                foreach (var item in compras)
+                {
+                    //cartitem.ProductId = item.ProductId;
+                    //cartitem.Quantity = item.Quantity;
+                    //cartitem.Price = item.Price;
+
+                    //listcartitem.Add(cartitem);
+                    //CartProcess cp = new CartProcess();
+                    //cp.insertCartItemDTO(item);
+                }
+                Session.RemoveAll();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Product");
+            }
+        }
+
         // GET: Cart
         public ActionResult Index()
         {

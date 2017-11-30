@@ -58,6 +58,34 @@ namespace ASF.Entities
         /// 
         /// </summary>
         [DataMember]
+        [DisplayName("Cookie")]
+        public string Cookie { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        [DisplayName("Cart Date")]
+        public DateTime CartDate { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        [DisplayName("Item Count")]
+        public int ItemCount { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        [DisplayName("Rowid")]
+        public Guid Rowid { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
         [DisplayName("Created On")]
         public DateTime CreatedOn { get; set; }
 

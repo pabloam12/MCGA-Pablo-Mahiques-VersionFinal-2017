@@ -20,6 +20,7 @@ namespace ASF.UI.WbSite.Controllers
     using ASF.UI.WbSite.Constants;
     using ASF.UI.WbSite.Services;
 
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         #region Fields
@@ -110,7 +111,7 @@ namespace ASF.UI.WbSite.Controllers
 
             // For simplicity we are just assuming your site is indexed on Google and redirecting to it.
             return this.Redirect(string.Format(
-                "https://www.google.co.uk/?q=site:{0} {1}", 
+                "https://www.google.co.uk/?q=site:{0} {1}",
                 this.Url.AbsoluteRouteUrl(HomeControllerRoute.GetIndex),
                 query));
         }
@@ -166,7 +167,7 @@ namespace ASF.UI.WbSite.Controllers
         public ContentResult OpenSearchXml()
         {
             Trace.WriteLine(string.Format(
-                "opensearch.xml requested. User Agent:<{0}>.", 
+                "opensearch.xml requested. User Agent:<{0}>.",
                 this.Request.Headers.Get("User-Agent")));
             string content = this.openSearchService.GetOpenSearchXml();
             return this.Content(content, ContentType.Xml, Encoding.UTF8);
@@ -186,7 +187,7 @@ namespace ASF.UI.WbSite.Controllers
         public ContentResult RobotsText()
         {
             Trace.WriteLine(string.Format(
-                "robots.txt requested. User Agent:<{0}>.", 
+                "robots.txt requested. User Agent:<{0}>.",
                 this.Request.Headers.Get("User-Agent")));
             string content = this.robotsService.GetRobotsText();
             return this.Content(content, ContentType.Text, Encoding.UTF8);
@@ -212,6 +213,6 @@ namespace ASF.UI.WbSite.Controllers
             }
 
             return this.Content(content, ContentType.Xml, Encoding.UTF8);
-        }  
+        }
     }
 }

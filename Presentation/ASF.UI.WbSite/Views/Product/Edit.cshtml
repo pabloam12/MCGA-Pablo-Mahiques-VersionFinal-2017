@@ -4,13 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
+@Html.Partial("_Espacio1")
+
 <h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />
@@ -125,6 +127,7 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@Html.Partial("_Espacio2")
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

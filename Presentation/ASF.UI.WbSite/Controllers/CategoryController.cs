@@ -9,6 +9,7 @@ using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         // GET: Category
@@ -32,7 +33,7 @@ namespace ASF.UI.WbSite.Controllers
                 var cp = new CategoryProcess();
                 cp.insertCategory(categroy);
                 DataCache.Instance.CategoryListRemove();
-            
+
                 return RedirectToAction("Index");
             }
             catch
@@ -63,7 +64,7 @@ namespace ASF.UI.WbSite.Controllers
                 cp.editCategory(category);
                 DataCache.Instance.CategoryListRemove();
                 return RedirectToAction("Index");
-             }
+            }
             catch
             {
                 return View();

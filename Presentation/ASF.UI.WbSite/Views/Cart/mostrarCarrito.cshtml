@@ -1,22 +1,33 @@
 ﻿@*@model IEnumerable<ASF.Entities.CartItem>*@
 
 @{
-    ViewBag.Title = "Productos Carrito";
+    ViewBag.Title = "Cart item";
 }
 
 @Html.Partial("_Espacio1")
 
-<h2>Productos en Carrito</h2><br />
-
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Productos en Carrito</h2><br />
+    </div>
+    <div class="row">
+        <div class="col-lg-4" style="float:right">
+            @Html.ActionLink("Finalizar Compra", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    @*<div class="col-lg-3">
+        <h4>Date: @DateTime.Now.ToShortDateString()</h4>
+    </div>*@
+</div>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
-        
+      
         <th>
-            @Html.DisplayName("Producto")
+            @Html.DisplayName("Articulo")
         </th>
         <th>
             @Html.DisplayName("Cantidad")
@@ -36,7 +47,6 @@
         {
             total += (double)(item.Price * item.Quantity);
             <tr>
-               
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
@@ -46,9 +56,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-               
+                
                 <td>
-                    @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId })
+                    @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
                 </td>
             </tr>
         }
@@ -65,7 +75,10 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Seguir Comprando", "Index", "Product")
+<div class="row">
+    <div class="col-lg-2">
+        @Html.ActionLink("Seguir Comprando", "Index", "Product", null, new { @class = "btn btn-success" })
+    </div>
+</div>
 
 @Html.Partial("_Espacio2")
-
