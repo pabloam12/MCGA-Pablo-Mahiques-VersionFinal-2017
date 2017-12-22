@@ -6,11 +6,17 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @*<li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })
-            </li>*@
+            @*si algun usuario logea se muestra el carrito en el menu
+                @if (User.Identity.IsAuthenticated == true)
+                {
+                }*@
+            <li>@Html.ActionLink(" ", "mostrarCarrito", "Cart", null, htmlAttributes: new { @class = "fa fa fa-cart-plus fa-2x" })</li>
+
             <li>
-                @Html.ActionLink("LogOut", "LogOff", "Account", new { Area = "" }, htmlAttributes: new { title = "LogOff" })
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>
+                @Html.ActionLink("LogOff ", "LogOff", "Account", new { Area = "" }, htmlAttributes: new { title = "LogOff" })
             </li>
         </ul>
     }
@@ -18,7 +24,8 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registrarse", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("LogIn", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink(" ", "mostrarCarrito", "Cart", null, htmlAttributes: new { @class = "fa fa fa-cart-plus fa-2x" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Account", new { area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

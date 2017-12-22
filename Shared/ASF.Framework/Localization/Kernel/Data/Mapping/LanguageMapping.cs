@@ -3,7 +3,7 @@ using ASF.Framework.Localization.Model.General.i18n;
 
 namespace ASF.Framework.Localization.Kernel.Data.Mapping
 {
-    public class LanguageMapping : EntityTypeConfiguration<Language>
+    public class LanguageMapping : EntityTypeConfiguration<Model.General.i18n.Language>
     {
         public LanguageMapping()
         {

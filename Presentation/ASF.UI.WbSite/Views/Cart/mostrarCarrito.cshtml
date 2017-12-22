@@ -12,12 +12,13 @@
     </div>
     <div class="row">
         <div class="col-lg-4" style="float:right">
-            @Html.ActionLink("Finalizar Compra", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+            @*@Html.ActionLink("Finalizar Compra", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })*@
+            @Html.ActionLink("Finalizar Compra", "pagoCompra", "Cart", null, new { @class = "btn btn-primary" })
         </div>
     </div>
     @*<div class="col-lg-3">
-        <h4>Date: @DateTime.Now.ToShortDateString()</h4>
-    </div>*@
+            <h4>Date: @DateTime.Now.ToShortDateString()</h4>
+        </div>*@
 </div>
 
 <p>
@@ -25,7 +26,7 @@
 </p>
 <table class="table table-hover">
     <tr>
-      
+
         <th>
             @Html.DisplayName("Articulo")
         </th>
@@ -35,7 +36,7 @@
         <th>
             @Html.DisplayName("Precio Unitario")
         </th>
-       
+
         <th></th>
     </tr>
     @{
@@ -56,7 +57,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                
+
                 <td>
                     @Html.ActionLink("Quitar", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
                 </td>
@@ -80,5 +81,7 @@
         @Html.ActionLink("Seguir Comprando", "Index", "Product", null, new { @class = "btn btn-success" })
     </div>
 </div>
+
+@Html.Partial("_Espacio2")
 
 @Html.Partial("_Espacio2")

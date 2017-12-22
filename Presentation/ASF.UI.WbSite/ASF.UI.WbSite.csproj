@@ -733,6 +733,7 @@
     <Content Include="Views\Shared\_Espacio2.cshtml" />
     <Content Include="Views\Cart\mostrarCarrito.cshtml" />
     <Content Include="Views\Cart\finalizarCompra.cshtml" />
+    <Content Include="Views\Cart\pagoCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

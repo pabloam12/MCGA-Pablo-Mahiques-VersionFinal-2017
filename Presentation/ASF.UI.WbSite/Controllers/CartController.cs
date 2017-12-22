@@ -11,12 +11,13 @@ namespace ASF.UI.WbSite.Controllers
 {
     public class CartController : Controller
     {
-
+        [AllowAnonymous]
         public ActionResult mostrarCarrito()
         {
             return View(Session["Carrito"]);
         }
 
+        [AllowAnonymous]
         public ActionResult agregarCarrito(int id)
         {
             var producto = new ProductProcess().findProduct(id);
@@ -62,7 +63,19 @@ namespace ASF.UI.WbSite.Controllers
             return -1;
         }
 
+        [Authorize]
         public ActionResult finalizarCompra()
+        {
+            List<CartItemDTO> compras = (List<CartItemDTO>)Session["Carrito"];
+
+            
+                Session.RemoveAll();
+                return View();
+           
+        }
+
+        [Authorize]
+        public ActionResult pagoCompra()
         {
             List<CartItemDTO> compras = (List<CartItemDTO>)Session["Carrito"];
 

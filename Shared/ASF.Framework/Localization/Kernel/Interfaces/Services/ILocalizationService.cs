@@ -9,7 +9,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
     public partial interface ILocalizationService
     {
 
-        Language SanitizeLanguage(Language language);
+        Language SanitizeLanguage(Model.General.i18n.Language language);
         LocaleResourceKey SanitizeLocaleResourceKey(LocaleResourceKey localeResourceKey);
         LocaleStringResource SanitizeLocaleStringResource(LocaleStringResource localeStringResource);
 
@@ -41,7 +41,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// <summary>
         /// Get all languages
         /// </summary>
-        IEnumerable<Language> AllLanguages { get; }
+        IEnumerable<Model.General.i18n.Language> AllLanguages { get; }
 
         /// <summary>
         /// Retrieve a language by the language-culture string e.g. "en-GB"
@@ -75,7 +75,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// Add a new language
         /// </summary>
         /// <param name="language"></param>
-        void Add(Language language);
+        void Add(Model.General.i18n.Language language);
 
         /// <summary>
         /// Add a new language
@@ -87,14 +87,14 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// Delete a language
         /// </summary>
         /// <param name="language"></param>
-        void Delete(Language language);
+        void Delete(Model.General.i18n.Language language);
 
         /// <summary>
         /// Convert a language into CSV format (e.g. for export)
         /// </summary>
         /// <param name="language"></param>
         /// <returns></returns>
-        string ToCsv(Language language);
+        string ToCsv(Model.General.i18n.Language language);
 
         /// <summary>
         /// Import a language from CSV
@@ -103,9 +103,9 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// <param name="allLines"></param>
         /// <returns>A report on the import</returns>
         CsvReport FromCsv(string langKey, List<string> allLines);
-        CsvReport FromCsv(Language lang, List<string> allLines);
+        CsvReport FromCsv(Model.General.i18n.Language lang, List<string> allLines);
 
-        IEnumerable<Language> GetAll();
+        IEnumerable<Model.General.i18n.Language> GetAll();
 
         /// <summary>
         /// Get all the values with keys for a language
@@ -177,7 +177,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// </summary>
         /// <param name="language"></param>
         /// <returns></returns>
-        Dictionary<string, string> ResourceKeysByLanguage(Language language);
+        Dictionary<string, string> ResourceKeysByLanguage(Model.General.i18n.Language language);
 
         /// <summary>
         /// Return all the resource keys in the system - non paged
@@ -191,7 +191,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// <param name="language"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        string GetResourceString(Language language, string key);
+        string GetResourceString(Model.General.i18n.Language language, string key);
 
         /// <summary>
         /// Gets the language text for the current language based on the key
@@ -206,7 +206,7 @@ namespace ASF.Framework.Localization.Kernel.Interfaces.Services
         /// <param name="language"> </param>
         /// <param name="key"></param>
         /// <returns></returns>
-        LocaleStringResource GetResource(Language language, string key);
+        LocaleStringResource GetResource(Model.General.i18n.Language language, string key);
 
         /// <summary>
         /// Get a resource by key

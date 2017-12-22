@@ -20,7 +20,7 @@ namespace ASF.Framework.Services
     {
         private readonly ISettingsService _settingsService;
         private readonly ICacheService _cacheService;
-        private Language _currentLanguage;
+        private Localization.Model.General.i18n.Language _currentLanguage;
         private readonly KunturContext _context;
         private readonly Dictionary<string, string> _perRequestLanguageStrings;
 
@@ -42,7 +42,7 @@ namespace ASF.Framework.Services
 
         #region Sanitizing
 
-        public Language SanitizeLanguage(Language language)
+        public Language SanitizeLanguage(Localization.Model.General.i18n.Language language)
         {
             language.Name = StringUtils.SafePlainText(language.Name);
             language.LanguageCulture = StringUtils.SafePlainText(language.LanguageCulture);
@@ -137,7 +137,7 @@ namespace ASF.Framework.Services
         /// Add a new language into the system (does NOT set current language)
         /// </summary>
         /// <param name="language"></param>
-        public void Add(Language language)
+        public void Add(Localization.Model.General.i18n.Language language)
         {
             // Does the language already exist by name or language-locale?
             var existingLanguage = GetLanguageByLanguageCulture(language.LanguageCulture);
@@ -173,7 +173,7 @@ namespace ASF.Framework.Services
         public Language Add(CultureInfo cultureInfo)
         {
             // Create a domain language object
-            var language = new Language
+            var language = new Localization.Model.General.i18n.Language
             {
                 Name = cultureInfo.EnglishName,
                 LanguageCulture = cultureInfo.Name,
@@ -211,7 +211,7 @@ namespace ASF.Framework.Services
         /// Get a resource key by id
         /// </summary>
         /// <returns></returns>
-        public LocaleStringResource GetResource(Language language, string key)
+        public LocaleStringResource GetResource(Localization.Model.General.i18n.Language language, string key)
         {
             return GetResource(language.Id, key);
         }
@@ -220,7 +220,7 @@ namespace ASF.Framework.Services
         /// Get a resource key by id
         /// </summary>
         /// <returns></returns>
-        public string GetResourceString(Language language, string key)
+        public string GetResourceString(Localization.Model.General.i18n.Language language, string key)
         {
             var resFormat = GetResource(language.Id, key);
 
@@ -438,7 +438,7 @@ namespace ASF.Framework.Services
                 {
                     // This is a one off scenario and means the system has no settings
                     // usually when running the installer, so we need to return a default language
-                    return new Language { Name = "Setup Language", LanguageCulture = "en-GB" };
+                    return new Localization.Model.General.i18n.Language { Name = "Setup Language", LanguageCulture = "en-GB" };
                 }
 
                 // If we get here just set the default language
@@ -479,7 +479,7 @@ namespace ASF.Framework.Services
         /// <summary>
         /// All languages
         /// </summary>
-        public IEnumerable<Language> AllLanguages => GetAll();
+        public IEnumerable<Localization.Model.General.i18n.Language> AllLanguages => GetAll();
 
         /// <summary>
         /// Get paged set of resources for a language
@@ -549,7 +549,7 @@ namespace ASF.Framework.Services
         /// </summary>
         /// <param name="language"></param>
         /// <returns></returns>
-        public Dictionary<string, string> ResourceKeysByLanguage(Language language)
+        public Dictionary<string, string> ResourceKeysByLanguage(Localization.Model.General.i18n.Language language)
         {
             var cacheKey = string.Concat(AppConstants.LanguageStrings, language.Id);
             var cachedResourceKeys = _cacheService.Get<Dictionary<string, string>>(cacheKey);
@@ -691,7 +691,7 @@ namespace ASF.Framework.Services
         /// Delete a language
         /// </summary>
         /// <param name="language"></param>
-        public void Delete(Language language)
+        public void Delete(Localization.Model.General.i18n.Language language)
         {
             // Cannot delete default language
             if (language.Id == DefaultLanguage.Id)
@@ -771,7 +771,7 @@ namespace ASF.Framework.Services
         /// </summary>
         /// <param name="language"></param>
         /// <returns></returns>
-        public string ToCsv(Language language)
+        public string ToCsv(Localization.Model.General.i18n.Language language)
         {
             var csv = new StringBuilder();
 
@@ -785,7 +785,7 @@ namespace ASF.Framework.Services
         }
 
 
-        public CsvReport FromCsv(Language language, List<string> allLines)
+        public CsvReport FromCsv(Localization.Model.General.i18n.Language language, List<string> allLines)
         {
             var commaSeparator = new[] { ',' };
             var report = new CsvReport();
@@ -891,7 +891,7 @@ namespace ASF.Framework.Services
             return report;
         }
 
-        public IEnumerable<Language> GetAll()
+        public IEnumerable<Localization.Model.General.i18n.Language> GetAll()
         {
             return _context.Language.OrderBy(x => x.Name).ToList();
         }
@@ -933,7 +933,7 @@ namespace ASF.Framework.Services
             }
 
             // Look up the language and culture
-            Language language;
+            Localization.Model.General.i18n.Language language;
 
             try
             {

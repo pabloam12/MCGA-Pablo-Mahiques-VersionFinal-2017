@@ -21,7 +21,7 @@ namespace ASF.Framework.Localization.Kernel.Data.Context
             Configuration.LazyLoadingEnabled = true;
         }
 
-        public DbSet<Language> Language { get; set; }
+        public DbSet<Model.General.i18n.Language> Language { get; set; }
         public DbSet<LocaleResourceKey> LocaleResourceKey { get; set; }
         public DbSet<LocaleStringResource> LocaleStringResource { get; set; }
         public DbSet<Settings> Setting { get; set; }

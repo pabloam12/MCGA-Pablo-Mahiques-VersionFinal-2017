@@ -21,7 +21,7 @@ namespace ASF.Framework.Localization.Kernel.Data.Context
             if (language == null)
             {
                 var cultureInfo = LanguageUtils.GetCulture(langCulture);
-                language = new Language
+                language = new Model.General.i18n.Language
                 {
                     Name = cultureInfo.EnglishName,
                     LanguageCulture = cultureInfo.Name,

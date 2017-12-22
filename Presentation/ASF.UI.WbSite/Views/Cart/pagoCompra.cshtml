@@ -1,0 +1,69 @@
+﻿@model ASF.Entities.CreditCard
+@{
+    ViewBag.Title = "Ya estas a solo un paso!!!";
+}
+@Html.Partial("_Espacio1")
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Pagar</h2><br />
+    </div>
+    @*<div class="col-lg-3">
+            <h4>Fecha: @DateTime.Now.ToShortDateString()</h4>
+        </div>*@
+    <div class="row">
+        <div class="col-lg-4" style="float:right">
+            @Html.ActionLink("Pagar", "finalizarCompra", "Cart", null, new { @class = "btn btn-primary" })
+            
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4></h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.endMonth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.endMonth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.endMonth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.endYear, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.endYear, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.endYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codVer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codVer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codVer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+              
+    </div>
+}
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+@Html.Partial("_Espacio2")
